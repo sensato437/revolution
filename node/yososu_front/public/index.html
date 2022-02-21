@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Restful API Example</title>
+</head>
+<body>
+  <iframe name='maps' width="60%" height="800px" align = "right"
+  style="border:none;" src="/api/map"></iframe>
+<h1> Restful API Example</h1>
+-----------------------------------------------------------<br>
+<h4> 요소수 입력</h4>
+-----------------------------------------------------------<br>
+
+<form method='post' action='api/map/lng' name='mapform' target="maps">
+  <input name = addr type="hidden" size='10' name='addr'>
+</form>
+<form method='post' action='/api/find/addr' name='userForm' target="targetURL">
+  <input type='button' value="/list" onclick="document.targetURL.location.href='/list'; document.maps.location.href='/api/map'">
+  주소 <input type="text" size='10' name='addr' onchange="document.mapform.addr.value = document.userForm.addr.value">
+  <input type='button' value="GET /api/finds?params"
+  onclick='document.targetURL.location.href="/api/finds?addr="+document.userForm.addr.value'>
+  <p>
+-----------------------------------------------------------<br>
+  <h4> POST APIs</h4>
+-----------------------------------------------------------<br>
+  <button type="submit" name="userBody" formaction="/api/find/addr" onclick ="document.mapform.submit()">POST</button>
+
+</form>
+-----------------------------------------------------------<br>
+<iframe name=targetURL class="iframe-preview center"  width="40%" height="500px" align = "left"
+style="border:none;" src="/list">
+</iframe>
+</body>
+</html>
